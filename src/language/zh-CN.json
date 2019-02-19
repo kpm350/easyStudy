@@ -7,5 +7,6 @@
   "multipleChoice": "多选",
   "gupFilling": "填空",
   "Backward": "后退",
-  "Forward": "前进"
+  "Forward": "前进",
+  "CreateTopic": "创建题目"
 }

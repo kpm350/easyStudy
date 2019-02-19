@@ -32,22 +32,28 @@
       <Icon type="md-pie" size="17"/>
       <!-- graphic statistics -->
     </Button>
-    <Drawer title="CreateTopic" v-model="value3" width="350" :mask-closable="true" :styles="styles">
+    <Drawer
+      :title="$t('CreateTopic')"
+      v-model="value3"
+      width="350"
+      :mask-closable="true"
+      :styles="styles"
+    >
       <Form :model="formData">
         <Row :gutter="32">
-          <Col span="12">
-            <FormItem label="Name" label-position="top">
+          <Col span="24">
+            <FormItem label="题目" label-position="top">
               <Input v-model="formData.name" placeholder="please enter user name"/>
             </FormItem>
           </Col>
-          <Col span="12">
+          <!-- <Col span="12">
             <FormItem label="Url" label-position="top">
               <Input v-model="formData.url" placeholder="please enter url">
                 <span slot="prepend">http://</span>
                 <span slot="append">.com</span>
               </Input>
             </FormItem>
-          </Col>
+          </Col>-->
         </Row>
         <Row :gutter="32">
           <Col span="12">
@@ -59,10 +65,11 @@
             </FormItem>
           </Col>
           <Col span="12">
-            <FormItem label="Type" label-position="top">
+            <FormItem label="题目类型" label-position="top">
               <Select v-model="formData.type" placeholder="please choose the type">
-                <Option value="private">Private</Option>
-                <Option value="public">Public</Option>
+                <Option value="private">单选</Option>
+                <Option value="public">多选</Option>
+                <Option value="gulpfiling">填空</Option>
               </Select>
             </FormItem>
           </Col>
@@ -74,17 +81,6 @@
                 <Option value="jobs">Steven Paul Jobs</Option>
                 <Option value="ive">Sir Jonathan Paul Ive</Option>
               </Select>
-            </FormItem>
-          </Col>
-          <Col span="12">
-            <FormItem label="DateTime" label-position="top">
-              <DatePicker
-                v-model="formData.date"
-                type="daterange"
-                placeholder="please select the date"
-                style="display: block"
-                placement="bottom-end"
-              ></DatePicker>
             </FormItem>
           </Col>
         </Row>
@@ -117,7 +113,7 @@ export default {
   },
   data() {
     return {
-      tebsValue: "singleChoice",
+      tebsValue: "gupFilling",
       tabsList: [
         {
           label: h => {

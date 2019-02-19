@@ -7,5 +7,6 @@
   "multipleChoice": "multipleChoice",
   "gupFilling": "gupFilling",
   "Backward": "Backward",
-  "Forward": "Forward"
+  "Forward": "Forward",
+  "CreateTopic": "CreateTopic"
 }
