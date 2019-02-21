@@ -12,10 +12,15 @@
           @keydown.enter.native="userEnter"
         ></i-input>
       </Col>
+      <Col span="12">
+        <ul>
+          <li v-for="(item,index) in log" :key="index">{{item}}</li>
+        </ul>
+      </Col>
     </Row>
-    <p>{{userInput}}</p>
     <h3>答案</h3>
-    <p>{{verify}}</p>
+    {{current.key}}
+    <p>回答是否正确：{{verify}}</p>
   </div>
 </template>
 <script>
@@ -38,20 +43,22 @@ export default {
   },
   watch: {
     userInput: function(v) {
-      this.verify = v == this.current.key ? true : false;
+      this.verify = v == this.current.key ? !!this.userEnter() : false;
     }
   },
   methods: {
-    ...mapActions(["next"]),
+    ...mapActions(["pushLog"]),
     userInputAction(e) {
-      console.log(e);
+      // console.log(e);
     },
     userEnter(e) {
+      this.userInput = "";
+      console.log("userEnter");
       this.end = Date.now();
-      this.next({
+      this.pushLog({
         verify: this.verify,
         id: this.current.id,
-        time: (this.end - this.start) / 100
+        time: (this.end - this.start) / 1000
       });
     }
   },

@@ -15,23 +15,27 @@
                       <Icon type="ios-arrow-forward" />
                  </Button>
           </ButtonGroup>-->
-          <Page
+          <!-- <Page
             :total="100"
             style="position:absolute;bottom:5px"
             :prev-text="$t('Backward')"
             :next-text="$t('Forward')"
-          />
+          />-->
         </div>
       </TabPane>
     </Tabs>
     <Button @click="value3 = true">
       <Icon type="md-settings" size="17"/>
-      <!-- topic managment -->
     </Button>
     <Button>
       <Icon type="md-pie" size="17"/>
-      <!-- graphic statistics -->
     </Button>
+    <!-- <Button>
+      <Icon type="md-download" size="17"/>下载题库
+    </Button>-->
+    <!-- <Button type="md-cloud-upload" size="17">Upload files</Button> -->
+    <span>上传本地json题库</span>
+    <input type="file" ref="fileUpload">
     <Drawer
       :title="$t('CreateTopic')"
       v-model="value3"
@@ -173,7 +177,16 @@ export default {
     };
   },
   methods: {},
-  mounted() {}
+  mounted() {
+    this.$refs["fileUpload"].addEventListener("change", function(event) {
+      let file = event.target.files[0];
+      let reader = new FileReader();
+      reader.readAsText(file);
+      reader.onload = function(e) {
+        console.log(reader.result);
+      };
+    });
+  }
 };
 </script>
 <style scoped>
